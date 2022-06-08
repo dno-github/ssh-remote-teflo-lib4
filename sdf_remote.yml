@@ -1,0 +1,29 @@
+
+# -*- coding: utf-8 -*-
+---
+remote_workspace:
+  - workspace_url: "git@github.com:dno-github/ssh-remote-teflo-lib3.git"
+    alias_name: remote1
+
+include:
+  - remote1/sdf.yml
+
+name: py3_include_provision
+description: "Provision step"
+
+provision:
+  - name: hello_im_remote_lib_provisioned_host
+    groups: localhost
+    ip_address: 127.0.0.1
+    ansible_params:
+      ansible_connection: local
+
+
+orchestrate:
+  - name: "This is an orchestrate fromsdf_remote"
+    description: "Test teflo" 
+    orchestrator: ansible
+    hosts: REMOTE_include_provisioned_host
+    ansible_script:
+      name: test.sh
+

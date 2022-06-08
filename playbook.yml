@@ -1,0 +1,7 @@
+---
+- hosts: ' {{ hosts }}'
+  tasks:
+  - name: remove an instance
+    debug:
+      msg: '{{ hello }}'
+

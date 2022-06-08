@@ -1,0 +1,5 @@
+from_cmd_line: "{{ normal.string }}"
+unused: "{{ ansible_facts.hostname }}"
+hello: "This is the hello from the var file"
+normal:
+  string: "hello from var file"

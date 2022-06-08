@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+---
+name: sdf from sdf_remote repo
+description: "Provision step"
+
+provision:
+  - name: REMOTE_include_provisioned_host
+    groups: localhost
+    ip_address: 127.0.0.1
+    ansible_params:
+      ansible_connection: local
+
+
+orchestrate:
+  - name: "{{ from_cmd_line }}"
+    description: "Test teflo" 
+    orchestrator: ansible
+    hosts: REMOTE_include_provisioned_host
+    ansible_playbook:
+      name: playbook.yml
+    ansible_options:
+      extra_vars:
+        hello: "{{ hello }}"
+
+
